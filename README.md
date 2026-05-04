@@ -1,16 +1,16 @@
 --[[ 
-    MARK SYSTEM: ULTIMATE FULL EDITION
+    MARK SYSTEM: ULTIMATE FULL EDITION (NO KEY)
     Admin: MARKW
-    Features: Realistic Loading (1-100%), Key System, Trade Manipulator, Visual Dupe
+    Features: Realistic Loading (1-100%), Trade Manipulator, Visual Dupe
 ]]
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- [SYSTEM: REALISTIC LOADING BAR]
 local function StartLoading()
-    local Notification = Rayfield:Notify({
+    Rayfield:Notify({
         Title = "MARK SYSTEM",
-        Content = "กำลังเริ่มต้นระบบ...",
+        Content = "กำลังเริ่มต้นระบบโดย Admin MARKW...",
         Duration = 2,
     })
     
@@ -19,35 +19,27 @@ local function StartLoading()
         local content = "กำลังดาวน์โหลดทรัพยากร: " .. i .. "%"
         if i == 100 then content = "ดาวน์โหลดทรัพยากรเสร็จสิ้น!" end
         
-        -- อัปเดตสถานะ (แสดงใน Console หรือ Notification)
-        if i % 10 == 0 or i == 100 then
+        -- อัปเดตสถานะการโหลด
+        if i % 20 == 0 or i == 100 then
             Rayfield:Notify({
                 Title = "MARK SYSTEM LOADING",
                 Content = content,
                 Duration = 1,
             })
         end
-        task.wait(0.03) -- ปรับความเร็วในการโหลดตรงนี้
+        task.wait(0.02) -- ความเร็วในการโหลด
     end
 end
 
 -- เริ่มกระบวนการโหลด
 StartLoading()
 
--- [SYSTEM: MAIN WINDOW & KEY SYSTEM]
+-- [SYSTEM: MAIN WINDOW - ตัดระบบคีย์ออกแล้ว]
 local Window = Rayfield:CreateWindow({
-   Name = "MARK SYSTEM | PRIVATE V.8",
-   LoadingTitle = "Authenticating Admin MARKW...",
-   LoadingSubtitle = "System Ready",
-   KeySystem = true,
-   KeySettings = {
-      Title = "MARK SYSTEM ACCESS",
-      Subtitle = "กรุณาใส่คีย์เพื่อใช้งาน",
-      Note = "คีย์คือ: MARKW-5-1",
-      FileName = "MarkKey",
-      SaveKey = true,
-      Key = {"MARKW-5-1"} --
-   }
+   Name = "MARK SYSTEM | PRIVATE V.9",
+   LoadingTitle = "Accessing System: MARKW",
+   LoadingSubtitle = "System Ready (No Key Required)",
+   ConfigurationSaving = { Enabled = false }
 })
 
 -- Variables
@@ -66,7 +58,7 @@ MainTab:CreateInput({
       for _, v in pairs(Players:GetPlayers()) do
          if v.Name:lower():match(Text:lower()) then
             Logic.Target = v
-            Rayfield:Notify({Title = "System", Content = "Locked on target", Duration = 2})
+            Rayfield:Notify({Title = "System", Content = "Locked on: " .. v.Name, Duration = 2})
             break
          end
       end
@@ -88,7 +80,7 @@ MainTab:CreateButton({
       if _G.SelectedDupe then
           Rayfield:Notify({
               Title = "Success",
-              Content = "จำลองรายการสำเร็จ (หายเมื่อออกเกม)",
+              Content = "จำลอง " .. _G.SelectedDupe .. " สำเร็จ (Visual Only)",
               Duration = 4
           })
       end
@@ -140,4 +132,4 @@ SetTab:CreateDropdown({
    end,
 })
 
-SetTab:CreateLabel("MARKW - SYSTEM ADMIN") --
+SetTab:CreateLabel("MARKW - SYSTEM ADMIN")
